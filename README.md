@@ -8,9 +8,7 @@ To get started set up an account on [Kinde](https://app.kinde.com/register).
 
 Clone this repo and install dependencies by running `npm i`
 
-Make a copy of `.env_sample` and name it simply `.env`. Set the following variable with the `Token host` value from the Kinde `App Keys` page
-
-Rename the value of `REACT_APP_KINDE_DOMAIN` environment variable to be the subdomain you set up on Kinde.
+Make a copy of `.env_sample` and name it simply `.env`. Set the value of `REACT_APP_KINDE_DOMAIN` in this file with the `Token host` value from the Kinde `App Keys` page.
 
 e.g
 
@@ -24,11 +22,11 @@ Your user will be redirected to Kinde to authenticate. After they have logged in
 
 You need to specify in Kinde which url you would like your user to be redirected to in order to authenticate your app.
 
-On the App Keys page set `Redirect url` to `http://localhost:3000`
+On the App Keys page set `Allowed callback URLs` to `http://localhost:3000`
 
 > Important! This is required for your users to successfully log in to your app.
 
-You will also need to set the url they will be redirected to upon logout. Set the `Logout url` to http://localhost:3000.
+You will also need to set the url they will be redirected to upon logout. Set the ` Allowed logout redirect URLs` to http://localhost:3000.
 
 ## Start your app
 
@@ -38,4 +36,4 @@ Click on `Sign up` and register your first user for your business!
 
 ## View users in Kinde
 
-If you navigate to the "Users" page within Kinde you will see your newly registered user there.
+If you navigate to the "Users" page within Kinde you will see your newly registered user there. 🚀
