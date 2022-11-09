@@ -14,6 +14,7 @@ root.render(
       domain={process.env.REACT_APP_KINDE_DOMAIN}
       logoutUri={process.env.REACT_APP_KINDE_LOGOUT_URL}
       redirectUri={process.env.REACT_APP_KINDE_REDIRECT_URL}
+      isDangerouslyUseLocalStorage={process.env.NODE_ENV === "development"}
     >
       <App />
     </KindeProvider>
