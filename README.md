@@ -8,10 +8,10 @@ To get started set up an account on [Kinde](https://app.kinde.com/register).
 
 Clone this repo and install dependencies by running `npm i`
 
-Make a copy of `.env_sample` and name it simply `.env`. Set the following values from the Kinde `App Keys` page.
+Make a copy of `.env_sample` and name it simply `.env`. Set the following values from the Kinde `Settings -> Applications -> Frontend app` page.
 
 - `REACT_APP_KINDE_CLIENT_ID` with the `Client ID` value
-- `REACT_APP_KINDE_DOMAIN` with the `Token host` value
+- `REACT_APP_KINDE_DOMAIN` with the `Domain` value
 
 e.g
 
@@ -26,7 +26,7 @@ Your user will be redirected to Kinde to authenticate. After they have logged in
 
 You need to specify in Kinde which url you would like your user to be redirected to in order to authenticate your app.
 
-On the App Keys page set `Allowed callback URLs` to `http://localhost:3000`
+On the `Settings -> Applications -> Frontend app` page set `Allowed callback URLs` to `http://localhost:3000`
 
 > Important! This is required for your users to successfully log in to your app.
 
