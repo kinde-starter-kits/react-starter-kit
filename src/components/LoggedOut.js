@@ -27,7 +27,7 @@ export default function LoggedOut() {
             <p className="text-body-1 hero-tagline">Configure your app</p>
 
             <a
-              href="https://kinde.com/docs/sdks/react-sdk"
+              href="https://kinde.com/docs/developer-tools/react-sdk"
               target="_blank"
               rel="noreferrer"
               className="btn btn-light btn-big"
