@@ -9,10 +9,18 @@ export default function LoggedIn() {
         <nav className="nav container">
           <h1 className="text-display-3">KindeAuth</h1>
           <div className="profile-blob">
-            <div className="avatar">
-              {user?.given_name?.[0]}
-              {user?.family_name?.[1]}
-            </div>
+            {user.picture !== "" ? (
+              <img
+                className="avatar"
+                src={user.picture}
+                alt="user profile avatar"
+              />
+            ) : (
+              <div className="avatar">
+                {user?.given_name?.[0]}
+                {user?.family_name?.[1]}
+              </div>
+            )}
             <div>
               <p className="text-heading-2">
                 {user?.given_name} {user?.family_name}
