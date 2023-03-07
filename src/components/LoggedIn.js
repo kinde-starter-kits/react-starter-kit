@@ -12,7 +12,7 @@ export default function LoggedIn() {
             {user.picture !== "" ? (
               <img
                 className="avatar"
-                src={user.picture}
+                src={user.pictre}
                 alt="user profile avatar"
               />
             ) : (
