@@ -2,7 +2,7 @@
   "name": "kinde-react-starter-kit",
   "version": "0.3.0",
   "dependencies": {
-    "@kinde-oss/kinde-auth-react": "^3.0.10",
+    "@kinde-oss/kinde-auth-react": "^3.0.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
