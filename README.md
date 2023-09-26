@@ -16,8 +16,8 @@ Make a copy of `.env_sample` and name it simply `.env`. Set the following values
 e.g
 
 ```
-REACT_APP_KINDE_CLIENT_ID=your_client_id
-REACT_APP_KINDE_DOMAIN=https://your_kinde_subdomain.kinde.com
+REACT_APP_KINDE_CLIENT_ID=<your_kinde_client_id>
+REACT_APP_KINDE_DOMAIN=https://<your_kinde_subdomain>.kinde.com
 ```
 
 ## Set your Callback and Logout URLs
