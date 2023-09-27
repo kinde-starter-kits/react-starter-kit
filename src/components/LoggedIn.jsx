@@ -60,7 +60,7 @@ export default function LoggedIn() {
           </p>
 
           <small className="text-subtle">
-            © 2022 KindeAuth, Inc. All rights reserved
+            © 2023 KindeAuth, Inc. All rights reserved
           </small>
         </div>
       </footer>
