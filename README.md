@@ -10,14 +10,14 @@ Clone this repo and install dependencies by running `npm i`
 
 Make a copy of `.env_sample` and name it simply `.env`. Set the following values from the Kinde `Settings -> Applications -> Frontend app` page.
 
-- `REACT_APP_KINDE_CLIENT_ID` with the `Client ID` value
-- `REACT_APP_KINDE_DOMAIN` with the `Domain` value
+- `VITE_KINDE_CLIENT_ID` with the `Client ID` value
+- `VITE_KINDE_DOMAIN` with the `Domain` value
 
 e.g
 
 ```
-REACT_APP_KINDE_CLIENT_ID=<your_kinde_client_id>
-REACT_APP_KINDE_DOMAIN=https://<your_kinde_subdomain>.kinde.com
+VITE_KINDE_CLIENT_ID=<your_kinde_client_id>
+VITE_KINDE_DOMAIN=https://<your_kinde_subdomain>.kinde.com
 ```
 
 ## Set your Callback and Logout URLs
