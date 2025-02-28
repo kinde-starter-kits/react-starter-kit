@@ -1,7 +1,8 @@
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
+import { LogoutLink } from "@kinde-oss/kinde-auth-react/components";
 
 export default function LoggedIn() {
-  const { user, logout } = useKindeAuth();
+  const { user } = useKindeAuth();
 
   return (
     <>
@@ -17,17 +18,15 @@ export default function LoggedIn() {
               />
             ) : (
               <div className="avatar">
-                {user?.given_name?.[0]}
-                {user?.family_name?.[1]}
+                {user?.givenName?.[0]}
+                {user?.familyName?.[1]}
               </div>
             )}
             <div>
               <p className="text-heading-2">
-                {user?.given_name} {user?.family_name}
+                {user?.givenName} {user?.familyName}
               </p>
-              <button className="text-subtle" onClick={logout}>
-                Sign out
-              </button>
+              <LogoutLink className="text-subtle">Sign out</LogoutLink>
             </div>
           </div>
         </nav>
