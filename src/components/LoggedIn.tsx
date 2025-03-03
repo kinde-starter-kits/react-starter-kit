@@ -10,10 +10,10 @@ export default function LoggedIn() {
         <nav className="nav container">
           <h1 className="text-display-3">KindeAuth</h1>
           <div className="profile-blob">
-            {user.picture !== "" ? (
+            {user?.picture !== "" ? (
               <img
                 className="avatar"
-                src={user.picture}
+                src={user?.picture}
                 alt="user profile avatar"
               />
             ) : (

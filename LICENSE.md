@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2022 Kinde - Starter kits
+Copyright (c) 2025 Kinde - Starter kits
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
