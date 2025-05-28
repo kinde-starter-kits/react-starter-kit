@@ -1,0 +1,2 @@
+overrides:
+  '@kinde-oss/kinde-auth-react': link:../../../Library/pnpm/global/5/node_modules/@kinde-oss/kinde-auth-react
