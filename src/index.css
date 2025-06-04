@@ -230,3 +230,13 @@ a {
 .next-steps-section {
   margin-top: var(--g-spacing-2x-large);
 }
+
+.c-user-menu {
+  list-style: none;
+  margin-top: 0.25rem;
+}
+
+.c-user-menu button,
+.c-user-menu a {
+  text-decoration: underline;
+}
