@@ -1,5 +1,5 @@
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
-import { LogoutLink } from "@kinde-oss/kinde-auth-react/components";
+import { LogoutLink, PortalLink } from "@kinde-oss/kinde-auth-react/components";
 
 export default function LoggedIn() {
   const { user } = useKindeAuth();
@@ -26,7 +26,14 @@ export default function LoggedIn() {
               <p className="text-heading-2">
                 {user?.givenName} {user?.familyName}
               </p>
-              <LogoutLink className="text-subtle">Sign out</LogoutLink>
+              <ul className="c-user-menu">
+                <li>
+                  <PortalLink>Account</PortalLink>
+                </li>
+                <li>
+                  <LogoutLink className="text-subtle">Sign out</LogoutLink>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>
