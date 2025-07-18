@@ -1,16 +1,14 @@
-import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { Link } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
-import type { UserProfile } from "@kinde/js-utils";
 
-// Example access control functions based on actual UserProfile properties
-const isAdmin = (user: UserProfile | undefined) => user?.email?.includes('admin') || false;
-const hasEmail = (user: UserProfile | undefined) => !!user?.email;
-const hasProfilePicture = (user: UserProfile | undefined) => !!user?.picture;
-const hasFullName = (user: UserProfile | undefined) => !!(user?.givenName && user?.familyName);
+// Example access control using KindeAuth has() function
+const adminPermissions = { permissions: ['admin'] };
+const userPermissions = { permissions: ['user'] };
+const premiumPermissions = { permissions: ['premium'] };
+const managerRoles = { roles: ['manager'] };
+const specialPermissions = { permissions: ['special'] };
 
 export default function AccessControlExamples() {
-  const { user } = useKindeAuth();
 
   return (
     <div className="container">
@@ -28,44 +26,41 @@ export default function AccessControlExamples() {
         </div>
 
         <div className="example-card">
-          <h3>Admin Access</h3>
-          <p>This route requires the user's email to contain 'admin'.</p>
-          <ProtectedRoute access={isAdmin} fallbackPath="/home">
+          <h3>Admin Permissions</h3>
+          <p>This route requires admin permissions.</p>
+          <ProtectedRoute has={adminPermissions} fallbackPath="/home">
             <div className="access-content">
-              <p>✅ You have admin access!</p>
-              <p>Current user: {user?.email}</p>
+              <p>✅ You have admin permissions!</p>
             </div>
           </ProtectedRoute>
         </div>
 
         <div className="example-card">
-          <h3>Email Required</h3>
-          <p>This route requires the user to have an email address.</p>
-          <ProtectedRoute access={hasEmail} fallbackPath="/home">
+          <h3>User Permissions</h3>
+          <p>This route requires user permissions.</p>
+          <ProtectedRoute has={userPermissions} fallbackPath="/home">
             <div className="access-content">
-              <p>✅ You have an email address!</p>
-              <p>Email: {user?.email}</p>
+              <p>✅ You have user permissions!</p>
             </div>
           </ProtectedRoute>
         </div>
 
         <div className="example-card">
-          <h3>Profile Picture Required</h3>
-          <p>This route requires the user to have a profile picture.</p>
-          <ProtectedRoute access={hasProfilePicture} fallbackPath="/home">
+          <h3>Premium Permissions</h3>
+          <p>This route requires premium permissions.</p>
+          <ProtectedRoute has={premiumPermissions} fallbackPath="/home">
             <div className="access-content">
-              <p>✅ You have a profile picture!</p>
+              <p>✅ You have premium permissions!</p>
             </div>
           </ProtectedRoute>
         </div>
 
         <div className="example-card">
-          <h3>Full Name Required</h3>
-          <p>This route requires both given name and family name.</p>
-          <ProtectedRoute access={hasFullName} fallbackPath="/home">
+          <h3>Manager Role</h3>
+          <p>This route requires the manager role.</p>
+          <ProtectedRoute has={managerRoles} fallbackPath="/home">
             <div className="access-content">
-              <p>✅ You have a complete name!</p>
-              <p>Name: {user?.givenName} {user?.familyName}</p>
+              <p>✅ You have manager role!</p>
             </div>
           </ProtectedRoute>
         </div>
@@ -74,11 +69,11 @@ export default function AccessControlExamples() {
           <h3>Custom Fallback Path</h3>
           <p>This route redirects to dashboard when access is denied.</p>
           <ProtectedRoute 
-            access={(user) => user?.email?.includes('special') || false}
+            has={specialPermissions}
             fallbackPath="/dashboard"
           >
             <div className="access-content">
-              <p>✅ You have special access!</p>
+              <p>✅ You have special permissions!</p>
             </div>
           </ProtectedRoute>
         </div>

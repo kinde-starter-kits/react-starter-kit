@@ -15,90 +15,112 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 ## Advanced Usage with Access Control
 
-### Custom Access Function
-
-```tsx
-// Define your access control function
-const isAdmin = (user: UserProfile | undefined) => 
-  user?.email?.includes('admin') || false;
-
-// Use it in your route
-<ProtectedRoute access={isAdmin} fallbackPath="/home">
-  <AdminPanel />
-</ProtectedRoute>
-```
-
-### Custom Fallback Path
-
-```tsx
-<ProtectedRoute 
-  access={(user) => user?.email?.includes('premium') || false}
-  fallbackPath="/upgrade"
->
-  <PremiumContent />
-</ProtectedRoute>
-```
-
-## Access Control Examples
-
-### Email-Based Access
-
-```tsx
-// Only users with admin in their email
-const isAdmin = (user: UserProfile | undefined) => 
-  user?.email?.includes('admin') || false;
-
-// Only users with specific domain
-const isCompanyUser = (user: UserProfile | undefined) => 
-  user?.email?.endsWith('@company.com') || false;
-```
-
-### Profile-Based Access
-
-```tsx
-// Users with profile pictures
-const hasProfilePicture = (user: UserProfile | undefined) => 
-  !!user?.picture;
-
-// Users with complete names
-const hasFullName = (user: UserProfile | undefined) => 
-  !!(user?.givenName && user?.familyName);
-```
-
-### ID-Based Access
-
-```tsx
-// Specific user access
-const isSpecificUser = (user: UserProfile | undefined) => 
-  user?.id === 'specific-user-id';
-
-// Multiple user access
-const isAllowedUser = (user: UserProfile | undefined) => 
-  ['user1', 'user2', 'user3'].includes(user?.id || '');
-```
-
-## Integration with KindeAuth Features
-
 ### Using KindeAuth Permissions
 
 ```tsx
-import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
-
-const hasPermission = (user: UserProfile | undefined) => {
-  // You can use KindeAuth's permission system
-  // This is a simplified example
-  return user?.permissions?.includes('read:admin') || false;
-};
+// Check for specific permissions
+<ProtectedRoute has={{ permissions: ['admin'] }} fallbackPath="/home">
+  <AdminPanel />
+</ProtectedRoute>
 ```
 
 ### Using KindeAuth Roles
 
 ```tsx
-const hasRole = (user: UserProfile | undefined) => {
-  // You can use KindeAuth's role system
-  // This is a simplified example
-  return user?.roles?.includes('manager') || false;
-};
+<ProtectedRoute 
+  has={{ roles: ['manager'] }}
+  fallbackPath="/upgrade"
+>
+  <ManagerContent />
+</ProtectedRoute>
+```
+
+## Access Control Examples
+
+### Permission-Based Access
+
+```tsx
+// Check for admin permissions
+<ProtectedRoute has={{ permissions: ['admin'] }}>
+  <AdminPanel />
+</ProtectedRoute>
+
+// Check for multiple permissions
+<ProtectedRoute has={{ permissions: ['read', 'write'] }}>
+  <Editor />
+</ProtectedRoute>
+```
+
+### Role-Based Access
+
+```tsx
+// Check for specific role
+<ProtectedRoute has={{ roles: ['manager'] }}>
+  <ManagerDashboard />
+</ProtectedRoute>
+
+// Check for multiple roles
+<ProtectedRoute has={{ roles: ['admin', 'supervisor'] }}>
+  <AdminDashboard />
+</ProtectedRoute>
+```
+
+### Feature Flag Access
+
+```tsx
+// Check for feature flags
+<ProtectedRoute has={{ featureFlags: ['beta-feature'] }}>
+  <BetaFeature />
+</ProtectedRoute>
+```
+
+### Billing Entitlements
+
+```tsx
+// Check for billing entitlements
+<ProtectedRoute has={{ billingEntitlements: ['premium'] }}>
+  <PremiumContent />
+</ProtectedRoute>
+```
+
+## Integration with KindeAuth Features
+
+The `ProtectedRoute` component now directly integrates with KindeAuth's `has()` function, making it easier to check permissions, roles, feature flags, and billing entitlements without writing custom access functions.
+
+### Using KindeAuth Permissions
+
+```tsx
+// Check for specific permissions
+<ProtectedRoute has={{ permissions: ['read:admin', 'write:admin'] }}>
+  <AdminPanel />
+</ProtectedRoute>
+```
+
+### Using KindeAuth Roles
+
+```tsx
+// Check for specific roles
+<ProtectedRoute has={{ roles: ['admin', 'supervisor'] }}>
+  <AdminDashboard />
+</ProtectedRoute>
+```
+
+### Using Feature Flags
+
+```tsx
+// Check for feature flags
+<ProtectedRoute has={{ featureFlags: ['beta-feature', 'new-ui'] }}>
+  <BetaFeature />
+</ProtectedRoute>
+```
+
+### Using Billing Entitlements
+
+```tsx
+// Check for billing entitlements
+<ProtectedRoute has={{ billingEntitlements: ['premium', 'enterprise'] }}>
+  <PremiumContent />
+</ProtectedRoute>
 ```
 
 ## Component Props
@@ -106,20 +128,25 @@ const hasRole = (user: UserProfile | undefined) => {
 | Prop | Type | Required | Default | Description |
 |------|------|----------|---------|-------------|
 | `children` | `React.ReactNode` | Yes | - | The component to render if access is granted |
-| `access` | `(user: UserProfile \| undefined) => boolean` | No | - | Function that determines if user has access |
+| `has` | `HasParams` | No | - | KindeAuth has() parameters to check permissions/roles |
 | `fallbackPath` | `string` | No | `"/"` | Path to redirect to if access is denied |
 
-## UserProfile Type
+## HasParams Type
 
-The `UserProfile` type from KindeAuth includes:
+The `has` prop accepts the same parameters as KindeAuth's `has()` function:
 
 ```tsx
-interface UserProfile {
-  id: string;
-  givenName?: string;
-  familyName?: string;
-  email?: string;
-  picture?: string;
+interface HasParams {
+  roles?: string[];
+  permissions?: string[];
+  featureFlags?: string[];
+  billingEntitlements?: string[];
+  forceApi?: boolean | {
+    roles?: boolean;
+    permissions?: boolean;
+    featureFlags?: boolean;
+    billingEntitlements?: true;
+  };
 }
 ```
 
@@ -151,7 +178,7 @@ interface UserProfile {
     path="/admin"
     element={
       <ProtectedRoute 
-        access={(user) => user?.email?.includes('admin') || false}
+        has={{ permissions: ['admin'] }}
         fallbackPath="/dashboard"
       >
         <AdminPanel />
@@ -163,7 +190,7 @@ interface UserProfile {
     path="/premium"
     element={
       <ProtectedRoute 
-        access={(user) => user?.email?.includes('premium') || false}
+        has={{ billingEntitlements: ['premium'] }}
         fallbackPath="/upgrade"
       >
         <PremiumContent />
@@ -177,10 +204,29 @@ interface UserProfile {
 
 You can test different access scenarios by:
 
-1. **Using different email addresses** when registering users
-2. **Creating test users** with specific properties
+1. **Setting up permissions and roles** in your KindeAuth dashboard
+2. **Creating test users** with specific permissions/roles
 3. **Using the examples page** at `/examples` to see different access controls in action
+4. **Testing feature flags** by enabling/disabling them in KindeAuth
 
 ## Migration from Basic ProtectedRoute
 
-If you were using the basic `ProtectedRoute` before, your existing code will continue to work without changes. The new `access` and `fallbackPath` props are optional. 
+If you were using the basic `ProtectedRoute` before, your existing code will continue to work without changes. The new `has` and `fallbackPath` props are optional.
+
+## Migration from Custom Access Functions
+
+If you were using custom access functions with the `access` prop, you can now use the `has` prop instead:
+
+**Before:**
+```tsx
+<ProtectedRoute access={(user) => user?.email?.includes('admin') || false}>
+  <AdminPanel />
+</ProtectedRoute>
+```
+
+**After:**
+```tsx
+<ProtectedRoute has={{ permissions: ['admin'] }}>
+  <AdminPanel />
+</ProtectedRoute>
+``` 

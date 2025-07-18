@@ -5,7 +5,6 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AccessControlExamples from "./components/AccessControlExamples";
-import { has } from "@kinde-oss/kinde-auth-react/utils";
 
 export default function App() {
   const { isLoading, isAuthenticated } = useKindeAuth();
@@ -45,7 +44,7 @@ export default function App() {
           path="/admin"
           element={
             <ProtectedRoute 
-              access={async () => await has({ permissions: ['test2'] })}
+              has={{ permissions: ['test2'] }}
               fallbackPath="/home"
             >
               <div className="container">
