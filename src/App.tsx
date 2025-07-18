@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AccessControlExamples from "./components/AccessControlExamples";
+import Admin from "./components/Admin";
 
 export default function App() {
   const { isLoading, isAuthenticated } = useKindeAuth();
@@ -39,18 +40,15 @@ export default function App() {
           }
         />
         
-        {/* Example of a route with custom access control */}
+        {/* Admin route with role-based access control */}
         <Route
           path="/admin"
           element={
             <ProtectedRoute 
-              has={{ permissions: ['test2'] }}
+              has={{ roles: ['admin'] }}
               fallbackPath="/home"
             >
-              <div className="container">
-                <h1>Admin Panel</h1>
-                <p>This page is only accessible to admin users.</p>
-              </div>
+              <Admin />
             </ProtectedRoute>
           }
         />

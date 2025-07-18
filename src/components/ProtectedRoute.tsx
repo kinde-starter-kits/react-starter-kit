@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { Navigate } from "react-router-dom";
-import { has } from "@kinde-oss/kinde-auth-react/utils";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -25,7 +24,7 @@ export default function ProtectedRoute({
   has: hasParams, 
   fallbackPath = "/" 
 }: ProtectedRouteProps) {
-  const { isLoading, isAuthenticated } = useKindeAuth();
+  const { isLoading, isAuthenticated, has } = useKindeAuth();
   const [accessLoading, setAccessLoading] = useState(false);
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
 
@@ -51,7 +50,7 @@ export default function ProtectedRoute({
     if (isAuthenticated) {
       checkAccess();
     }
-  }, [hasParams, isAuthenticated]);
+  }, [has, hasParams, isAuthenticated]);
 
   if (isLoading || accessLoading) {
     return <div>Loading...</div>;

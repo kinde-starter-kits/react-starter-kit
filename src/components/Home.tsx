@@ -1,8 +1,28 @@
 import { Link } from "react-router-dom";
 import { PortalLink } from "@kinde-oss/kinde-auth-react/components";
 import UserDropdown from "./UserDropdown";
+import { has } from "@kinde-oss/kinde-auth-react/utils";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkAdminRole = async () => {
+      try {
+        const hasAdminRole = await has({ roles: ['admin'] });
+        setIsAdmin(hasAdminRole);
+      } catch (error) {
+        console.error('Error checking admin role:', error);
+        setIsAdmin(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    checkAdminRole();
+  }, []);
 
   return (
     <>
@@ -12,6 +32,9 @@ export default function Home() {
           <div className="nav-links">
             <Link to="/" className="nav-link active">Home</Link>
             <Link to="/dashboard" className="nav-link">Dashboard</Link>
+            {!isLoading && isAdmin && (
+              <Link to="/admin" className="nav-link">Admin</Link>
+            )}
           </div>
           <UserDropdown />
         </nav>
