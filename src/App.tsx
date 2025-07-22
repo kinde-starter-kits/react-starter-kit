@@ -1,13 +1,12 @@
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import {
+  Navigate,
+  Route,
   BrowserRouter as Router,
   Routes,
-  Route,
-  Navigate,
 } from "react-router-dom";
-import LoggedOut from "./components/LoggedOut";
 import Home from "./components/Home";
-import ProtectedRoute from "./components/ProtectedRoute";
+import LoggedOut from "./components/LoggedOut";
 
 export default function App() {
   const { isLoading, isAuthenticated } = useKindeAuth();
@@ -26,14 +25,7 @@ export default function App() {
         />
 
         {/* Protected routes - only accessible when authenticated */}
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/home" element={<Home />} />
 
         {/* Redirect any unknown routes to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
