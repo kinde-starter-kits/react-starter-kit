@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@kinde-oss/kinde-auth-react": "^5.6.0-2",
+    "@kinde-oss/kinde-auth-react": "^5.6.0",
     "@tailwindcss/vite": "^4.1.11",
     "@types/react-router-dom": "^5.3.3",
     "react": "^19.1.0",
