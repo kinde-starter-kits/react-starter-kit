@@ -53,7 +53,7 @@ export default function ProtectedRoute({
     if (isAuthenticated) {
       checkAccess();
     }
-  }, [has, hasParams, isAuthenticated]);
+  }, [hasParams, isAuthenticated]);
 
   if (isLoading || accessLoading) {
     return <div>Loading...</div>;
