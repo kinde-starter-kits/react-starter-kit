@@ -1,11 +1,20 @@
+// import {
+//   RegisterLink,
+//   LoginLink,
+// } from "@kinde-oss/kinde-auth-react/components";
+
 export default function LoggedOut() {
   return (
     <>
-      <header></header>
+      <nav>
+        {/* These links are for authentication */}
+        {/* <LoginLink>Sign in</LoginLink>
+          <RegisterLink>Sign up</RegisterLink> */}
+      </nav>
 
       <main></main>
 
-      <footer></footer>
+      <footer className="footer"></footer>
     </>
   );
 }
