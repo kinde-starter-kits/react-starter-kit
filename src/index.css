@@ -33,6 +33,65 @@
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
+
+  /* Button component tokens */
+  --color-button-primary-bg: hsl(0 0% 6%);
+  --color-button-primary-bg-hover: hsl(0 0% 30%);
+  --color-button-primary-bg-active: hsl(0 0% 6%);
+  --color-button-primary-bg-disabled: hsl(0 0% 92%);
+  --color-button-primary-bg-loading: hsl(0 0% 67%);
+  --color-button-primary-text: hsl(0 0% 100%);
+  --color-button-primary-text-disabled: hsl(0 0% 67%);
+
+  --color-button-secondary-bg: hsl(0 0% 96%);
+  --color-button-secondary-bg-hover: hsl(0 0% 92%);
+  --color-button-secondary-bg-active: hsl(0 0% 86%);
+  --color-button-secondary-bg-disabled: hsl(0 0% 96%);
+  --color-button-secondary-bg-loading: hsl(0 0% 96%);
+  --color-button-secondary-text: hsl(0 0% 6%);
+  --color-button-secondary-text-disabled: hsl(0 0% 67%);
+  --color-button-secondary-border: hsl(0 0% 86%);
+
+  --color-button-uncontained-bg: transparent;
+  --color-button-uncontained-bg-hover: hsl(0 0% 96%);
+  --color-button-uncontained-bg-active: hsl(0 0% 92%);
+  --color-button-uncontained-bg-disabled: transparent;
+  --color-button-uncontained-bg-loading: hsl(0 0% 96%);
+  --color-button-uncontained-text: hsl(0 0% 6%);
+  --color-button-uncontained-text-disabled: hsl(0 0% 67%);
+
+  --color-button-destructive-bg: hsl(0 100% 38%);
+  --color-button-destructive-bg-hover: hsl(0 100% 25%);
+  --color-button-destructive-text: hsl(0 0% 100%);
+  --color-button-destructive-bg-disabled: hsl(0 100% 96%);
+
+  --color-button-upgrade-bg: hsl(275 100% 95%);
+  --color-button-upgrade-bg-hover: hsl(275 100% 92%);
+  --color-button-upgrade-bg-active: hsl(275 100% 89%);
+  --color-button-upgrade-text: hsl(274 62% 53%);
+  --color-button-upgrade-text-hover: hsl(274 91% 25%);
+
+  /* Button typography tokens */
+  --font-button-default: 500 1rem/1.5 Inter;
+  --font-button-small: 500 0.875rem/1.42857 Inter;
+  --font-button-large: 500 1.125rem/1.33333 Inter;
+  --tracking-button-default: -0.005em;
+  --tracking-button-large: -0.005em;
+
+  /* Button sizing tokens */
+  --size-button-height-default: 3rem;
+  --size-button-height-small: 2.5rem;
+  --size-button-height-large: 3.5rem;
+  --size-button-height-icon: 3rem;
+  --size-button-px-default: 1rem;
+  --size-button-px-small: 0.75rem;
+  --size-button-px-large: 1.5rem;
+  --size-button-py-default: 0.75rem;
+  --size-button-py-small: 0.625rem;
+  --size-button-py-large: 1rem;
+  --size-button-radius-default: 0.5rem;
+  --size-button-radius-small: 0.25rem;
+  --size-button-radius-icon: 50%;
 }
 
 :root {

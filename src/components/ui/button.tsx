@@ -10,43 +10,57 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: [
-          "bg-[hsl(0,0%,6%)] text-[hsl(0,0%,100%)]",
-          "hover:bg-[hsl(0,0%,30%)]",
-          "active:bg-[hsl(0,0%,6%)]",
-          "disabled:bg-[hsl(0,0%,92%)] disabled:text-[hsl(0,0%,67%)]",
-          "loading:bg-[hsl(0,0%,67%)]",
+          "bg-[var(--color-button-primary-bg)] text-[var(--color-button-primary-text)]",
+          "hover:bg-[var(--color-button-primary-bg-hover)]",
+          "active:bg-[var(--color-button-primary-bg-active)]",
+          "disabled:bg-[var(--color-button-primary-bg-disabled)] disabled:text-[var(--color-button-primary-text-disabled)]",
+          "loading:bg-[var(--color-button-primary-bg-loading)]",
         ].join(" "),
         secondary: [
-          "bg-[hsl(0,0%,96%)] text-[hsl(0,0%,6%)] border border-[hsl(0,0%,86%)]",
-          "hover:bg-[hsl(0,0%,92%)]",
-          "active:bg-[hsl(0,0%,86%)]",
-          "disabled:bg-[hsl(0,0%,96%)] disabled:text-[hsl(0,0%,67%)]",
-          "loading:bg-[hsl(0,0%,96%)]",
+          "bg-[var(--color-button-secondary-bg)] text-[var(--color-button-secondary-text)] border border-[var(--color-button-secondary-border)]",
+          "hover:bg-[var(--color-button-secondary-bg-hover)]",
+          "active:bg-[var(--color-button-secondary-bg-active)]",
+          "disabled:bg-[var(--color-button-secondary-bg-disabled)] disabled:text-[var(--color-button-secondary-text-disabled)]",
+          "loading:bg-[var(--color-button-secondary-bg-loading)]",
         ].join(" "),
         uncontained: [
-          "bg-transparent text-[hsl(0,0%,6%)]",
-          "hover:bg-[hsl(0,0%,96%)]",
-          "active:bg-[hsl(0,0%,92%)]",
-          "disabled:bg-transparent disabled:text-[hsl(0,0%,67%)]",
-          "loading:bg-[hsl(0,0%,96%)]",
+          "bg-[var(--color-button-uncontained-bg)] text-[var(--color-button-uncontained-text)]",
+          "hover:bg-[var(--color-button-uncontained-bg-hover)]",
+          "active:bg-[var(--color-button-uncontained-bg-active)]",
+          "disabled:bg-[var(--color-button-uncontained-bg-disabled)] disabled:text-[var(--color-button-uncontained-text-disabled)]",
+          "loading:bg-[var(--color-button-uncontained-bg-loading)]",
         ].join(" "),
         destructive: [
-          "bg-[hsl(0,100%,38%)] text-[hsl(0,0%,100%)]",
-          "hover:bg-[hsl(0,100%,25%)]",
-          "disabled:bg-[hsl(0,100%,96%)] disabled:text-[hsl(0,0%,67%)]",
+          "bg-[var(--color-button-destructive-bg)] text-[var(--color-button-destructive-text)]",
+          "hover:bg-[var(--color-button-destructive-bg-hover)]",
+          "disabled:bg-[var(--color-button-destructive-bg-disabled)] disabled:text-[var(--color-button-primary-text-disabled)]",
         ].join(" "),
         upgrade: [
-          "bg-[hsl(275,100%,95%)] text-[hsl(274,62%,53%)]",
-          "hover:bg-[hsl(275,100%,92%)] hover:text-[hsl(274,91%,25%)]",
-          "active:bg-[hsl(275,100%,89%)] active:text-[hsl(274,91%,25%)]",
+          "bg-[var(--color-button-upgrade-bg)] text-[var(--color-button-upgrade-text)]",
+          "hover:bg-[var(--color-button-upgrade-bg-hover)] hover:text-[var(--color-button-upgrade-text-hover)]",
+          "active:bg-[var(--color-button-upgrade-bg-active)] active:text-[var(--color-button-upgrade-text-hover)]",
         ].join(" "),
       },
       size: {
-        default:
-          "h-12 px-4 py-3 rounded-[0.5rem] text-[1rem] font-[500] tracking-[-0.005em] leading-[1.5]",
-        sm: "h-10 px-3 py-2.5 rounded-[0.25rem] text-[0.875rem] font-[500] leading-[1.42857]",
-        lg: "h-14 px-6 py-4 rounded-[0.5rem] text-[1.125rem] font-[500] tracking-[-0.005em] leading-[1.33333]",
-        icon: "h-12 w-12 p-0 rounded-[50%]",
+        default: [
+          `h-[var(--size-button-height-default)] px-[var(--size-button-px-default)] py-[var(--size-button-py-default)]`,
+          `rounded-[var(--size-button-radius-default)]`,
+          `text-[var(--font-button-default)] tracking-[var(--tracking-button-default)]`,
+        ].join(" "),
+        sm: [
+          `h-[var(--size-button-height-small)] px-[var(--size-button-px-small)] py-[var(--size-button-py-small)]`,
+          `rounded-[var(--size-button-radius-small)]`,
+          `text-[var(--font-button-small)]`,
+        ].join(" "),
+        lg: [
+          `h-[var(--size-button-height-large)] px-[var(--size-button-px-large)] py-[var(--size-button-py-large)]`,
+          `rounded-[var(--size-button-radius-default)]`,
+          `text-[var(--font-button-large)] tracking-[var(--tracking-button-large)]`,
+        ].join(" "),
+        icon: [
+          `h-[var(--size-button-height-icon)] w-[var(--size-button-height-icon)] p-0`,
+          `rounded-[var(--size-button-radius-icon)]`,
+        ].join(" "),
       },
       fullWidth: {
         true: "w-full justify-center",
@@ -61,7 +75,7 @@ const buttonVariants = cva(
         false: "",
       },
       destructive: {
-        true: "bg-[hsl(0,100%,38%)] text-[hsl(0,0%,100%)] hover:bg-[hsl(0,100%,25%)]",
+        true: "bg-[var(--color-button-destructive-bg)] text-[var(--color-button-destructive-text)] hover:bg-[var(--color-button-destructive-bg-hover)]",
         false: "",
       },
       loading: {
