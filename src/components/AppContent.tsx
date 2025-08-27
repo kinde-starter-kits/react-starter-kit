@@ -1,5 +1,6 @@
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { PortalLink } from "@kinde-oss/kinde-auth-react/components";
+import { Button } from "./ui/button";
 
 export default function LoggedIn() {
   const { user, logout } = useKindeAuth();
@@ -19,7 +20,7 @@ export default function LoggedIn() {
           <div className="container mx-auto px-4 py-4">
             <div className="flex justify-between items-center">
               <div className="text-xl font-semibold text-gray-800">
-                React Starter Kit
+                App name
               </div>
               <div className="flex items-center space-x-4">
                 {/* User Profile Section */}
@@ -45,15 +46,10 @@ export default function LoggedIn() {
 
                 {/* Navigation Links */}
                 <div className="flex space-x-2">
-                  <PortalLink className="px-3 py-2 text-gray-600 hover:text-gray-800 font-medium">
-                    Account
-                  </PortalLink>
-                  <button
-                    onClick={handleLogout}
-                    className="px-3 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 font-medium"
-                  >
-                    Sign out
-                  </button>
+                  <Button asChild variant="uncontained">
+                    <PortalLink>Account</PortalLink>
+                  </Button>
+                  <Button onClick={handleLogout}>Sign out</Button>
                 </div>
               </div>
             </div>
