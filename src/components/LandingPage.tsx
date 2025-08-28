@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 export default function LandingPage() {
   return (
     <div className="min-h-screen">
-      <nav className="shadow-sm border-b">
+      <nav className="">
         <div className="container mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="text-xl font-semibold text-gray-800">App name</div>
