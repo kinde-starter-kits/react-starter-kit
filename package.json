@@ -12,6 +12,7 @@
   "dependencies": {
     "@kinde-oss/kinde-auth-react": "^5.6.0",
     "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/vite": "^4.1.12",
     "@types/react-router-dom": "^5.3.3",
