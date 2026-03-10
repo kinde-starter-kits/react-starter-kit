@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")!).render(
     logoutUri={import.meta.env.VITE_KINDE_LOGOUT_URL}
     redirectUri={import.meta.env.VITE_KINDE_REDIRECT_URL}
     // When running local against a custom domain, include the line below
-    // useInsecureForRefreshToken={true}
+    useInsecureForRefreshToken={true}
   >
     <App />
   </KindeProvider>
