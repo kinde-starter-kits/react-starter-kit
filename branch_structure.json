@@ -1,0 +1,51 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "add-codeowners",
+    "chore/codeowners-deps-20251121-1605",
+    "dependabot/npm_and_yarn/rollup-3.29.5",
+    "dependabot/npm_and_yarn/vite-4.5.5",
+    "feat/bump-to-v4",
+    "feat/portal-link",
+    "feat/sdk-v5",
+    "feat/updated-starter",
+    "fix/CVE-vulnerability",
+    "main",
+    "peter/make-starter",
+    "rai/update-react-lib",
+    "remove-codeowners",
+    "renovate/test"
+  ],
+  "parent": {
+    "add-codeowners": "main",
+    "chore/codeowners-deps-20251121-1605": "main",
+    "dependabot/npm_and_yarn/rollup-3.29.5": "main",
+    "dependabot/npm_and_yarn/vite-4.5.5": "main",
+    "feat/bump-to-v4": "main",
+    "feat/portal-link": "main",
+    "feat/sdk-v5": "main",
+    "feat/updated-starter": "main",
+    "fix/CVE-vulnerability": "main",
+    "main": null,
+    "peter/make-starter": "main",
+    "rai/update-react-lib": "main",
+    "remove-codeowners": "main",
+    "renovate/test": "main"
+  },
+  "order": [
+    "main",
+    "add-codeowners",
+    "chore/codeowners-deps-20251121-1605",
+    "dependabot/npm_and_yarn/rollup-3.29.5",
+    "dependabot/npm_and_yarn/vite-4.5.5",
+    "feat/bump-to-v4",
+    "feat/portal-link",
+    "feat/sdk-v5",
+    "feat/updated-starter",
+    "fix/CVE-vulnerability",
+    "peter/make-starter",
+    "rai/update-react-lib",
+    "remove-codeowners",
+    "renovate/test"
+  ]
+}
